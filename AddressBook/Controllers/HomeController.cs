@@ -15,5 +15,11 @@ namespace AddressBook.Controllers
         {
             return View(db.AddressesDB);
         }
-    }
+
+        [HttpPost]
+        public ActionResult UpdateAdresses()
+        {
+            return PartialView(db.AddressesDB);
+        }
+    }    
 }

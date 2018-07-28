@@ -1,0 +1,13 @@
+﻿@model IEnumerable<AddressBook.Models.Address>
+
+@foreach (AddressBook.Models.Address address in Model)
+{
+    <tr>
+        <td><p>@address.Country<p></td>
+        <td><p>@address.City</p></td>
+        <td><p>@address.Street</p></td>
+        <td><p>@address.HouseNumber</p></td>
+        <td><p>@address.Date.ToLongDateString()</p></td>
+    </tr>
+}
+
