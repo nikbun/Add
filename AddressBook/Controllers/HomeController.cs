@@ -17,8 +17,16 @@ namespace AddressBook.Controllers
         }
 
         [HttpPost]
-        public ActionResult UpdateAdresses()
+        public ActionResult UpdateAdresses(string country, string city, string street, string houseNumber)
         {
+            Address newAddress = new Address();
+            newAddress.Country = country;
+            newAddress.City = city;
+            newAddress.Street = street;
+            newAddress.HouseNumber = int.Parse(houseNumber);
+            newAddress.Date = DateTime.Now;
+            db.AddressesDB.Add(newAddress);
+            db.SaveChanges();
             return PartialView(db.AddressesDB);
         }
     }    

@@ -1,35 +1,83 @@
-﻿@model IEnumerable<AddressBook.Models.Address>
-@{
+﻿@{
     ViewBag.Title = "Адресная книга";
 }
 
 <div>
-    <input type="submit" value="Добавить" />
-    @using (Ajax.BeginForm("UpdateAdresses", new AjaxOptions { UpdateTargetId = "results" }))
-    {
-        <input type="submit" value="Обновить" />
-    }
-    <table>
-        <thead>
-            <tr class="header">
-                <td><p>Страна</p></td>
-                <td><p>Город</p></td>
-                <td><p>Улица</p></td>
-                <td><p>№ дома</p></td>
-                <td><p>Дата создания записи<p></td>
-            </tr>
-        </thead>
-        <tbody id="results">
-            @foreach (AddressBook.Models.Address address in Model)
+
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+        Добавить
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            @using (Ajax.BeginForm("UpdateAdresses", new AjaxOptions { UpdateTargetId = "results" }))
             {
-                <tr>
-                    <td><p>@address.Country<p></td>
-                    <td><p>@address.City</p></td>
-                    <td><p>@address.Street</p></td>
-                    <td><p>@address.HouseNumber</p></td>
-                    <td><p>@address.Date.ToLongDateString()</p></td>
-                </tr>
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Добавление новой записи</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="col-md-12">
+                                <label for="validationDefault01">* Страна</label>
+                                <input type="text" name="country" class="form-control" id="validationDefault01" placeholder="Введите страну" required>
+                            </div>
+                            <div class="col-md-12">
+                                <label for="validationDefault01">* Город</label>
+                                <input type="text" name="city" class="form-control" id="validationDefault01" placeholder="Введите город" required>
+                            </div>
+                            <div class="col-md-12">
+                                <label for="validationDefault01">Улица</label>
+                                <input type="text" name="street" class="form-control" id="validationDefault01" placeholder="Введите улицу" required>
+                            </div>
+                            <div class="col-md-12">
+                                <label>Номер дома</label>
+                                <input type="text" name="houseNumber" class="form-control" placeholder="Введите номер дома" required>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Отмена</button>
+                        <button type="submit" class="btn btn-primary" disabled>Сохранить</button>
+                    </div>
+                </div>
             }
-        </tbody>
-    </table>
+        </div>
+    </div>
+
+
+    <div class="btn-group" role="group">
+        <input type="submit" class="btn btn-default" value="Добавить" />
+        @using (Ajax.BeginForm("UpdateAdresses", new AjaxOptions { UpdateTargetId = "results" }))
+        {
+            <div></div>
+            <div>
+                <input type="submit" class="btn btn-default" value="Обновить" />
+            </div>
+        }
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <table class="table  table-striped">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col"><p>Страна</p></th>
+                        <th scope="col"><p>Город</p></th>
+                        <th scope="col"><p>Улица</p></th>
+                        <th scope="col"><p>№ дома</p></th>
+                        <th scope="col"><p>Дата создания записи<p></th>
+                    </tr>
+                </thead>
+                <tbody id="results">
+                    @Html.Partial("UpdateAdresses")
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
+
