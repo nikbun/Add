@@ -8,16 +8,26 @@ namespace AddressBook.Models
     public class Address
     {
         [Key]
+        [ScaffoldColumn(false)]
         public int AddressID { get; set; }
-        // Страна
+        
+        [Required]
+        [Display(Name = "Страна")]
         public String Country { get; set; }
-        // Город
+
+        [Required]
+        [Display(Name = "Город")]
         public String City { get; set; }
-        // Улица
+
+        [Display(Name = "Улица")]
         public String Street { get; set; }
-        // Номер дома
+
+        [RegularExpression(@"^[0-9]{0,5}$", ErrorMessage = "Разрешен ввод только цифр")]
+        [Display(Name = "Номер дома")]
         public int HouseNumber { get; set; }
-        // Дата добавления записи
+
+        [ScaffoldColumn(false)]
+        [Display(Name = "Дата добавления записи")]
         public DateTime Date { get; set; }
     }
 }
