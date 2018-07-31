@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<AddressBook.Models.Address>
 
 @Html.AntiForgeryToken()
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal fade show" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" style="display: block; padding-right: 17px;">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -11,26 +11,27 @@
                 </button>
             </div>
             <div class="modal-body">
-                <div class="col-md-12">
+                <div class="form-group">
                     @Html.LabelFor(model => model.First().Country, htmlAttributes: new { @class = "control-label" })
                     @Html.EditorFor(model => model.First().Country, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.First().Country, "", new { @class = "text-danger" })
                 </div>
-                <div class="col-md-12">
+                <div class="form-group">
                     @Html.LabelFor(model => model.First().City, htmlAttributes: new { @class = "control-label" })
                     @Html.EditorFor(model => model.First().City, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.First().City, "", new { @class = "text-danger" })
                 </div>
-                <div class="col-md-12">
+                <div class="form-group">
                     @Html.LabelFor(model => model.First().Street, htmlAttributes: new { @class = "control-label" })
                     @Html.EditorFor(model => model.First().Street, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.First().Street, "", new { @class = "text-danger" })
                 </div>
-                <div class="col-md-12">
+                <div class="form-group">
                     @Html.LabelFor(model => model.First().HouseNumber, htmlAttributes: new { @class = "control-label" })
                     @Html.EditorFor(model => model.First().HouseNumber, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.First().HouseNumber, "", new { @class = "text-danger" })
                 </div>
+
             </div>
             <div class="modal-footer">
                 <div class="col" id="loading" style="display:none;">
@@ -72,9 +73,7 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
-        $("body").removeAttr("class");
-        $("body").removeAttr("style");
-        $("div[class='modal-backdrop fade show']").remove();
+        alert("Такой адрес уже есть в базе данных!");
     });
 
 </script>

@@ -10,7 +10,11 @@
     </button>
 
     <!-- Таблица и модальное окно -->
-    @using (Ajax.BeginForm("UpdateAdresses", new AjaxOptions { UpdateTargetId = "results" }))
+    @using (Ajax.BeginForm("UpdateAdresses", new AjaxOptions
+    {
+        UpdateTargetId = "results",
+        LoadingElementId = "loading"
+    }))
     {
         <div id="results" >
             @Html.Partial("UpdateAdresses")

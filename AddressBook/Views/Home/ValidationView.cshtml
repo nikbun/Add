@@ -31,8 +31,12 @@
                     @Html.EditorFor(model => model.First().HouseNumber, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.First().HouseNumber, "", new { @class = "text-danger" })
                 </div>
+                
             </div>
             <div class="modal-footer">
+                <div class="col" id="loading" style="display:none;">
+                    <label class="control-label">Отправляем данные на сервер. Подождите...</label>
+                </div>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Отмена</button>
                 <button type="submit" class="btn btn-primary">Сохранить</button>
             </div>

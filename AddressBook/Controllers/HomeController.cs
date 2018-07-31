@@ -38,13 +38,26 @@ namespace AddressBook.Controllers
             
             if (ModelState.IsValid)
             {
+                bool isExist = false;
                 addressList.Add(new Address());
-                db.AddressesDB.Add(address);
-                await db.SaveChangesAsync();
                 foreach (Address adrs in db.AddressesDB)
                 {
                     addressList.Add(adrs);
+                    if (adrs.Country == address.Country &&
+                        adrs.City == address.City &&
+                        adrs.Street == address.Street &&
+                        adrs.HouseNumber == address.HouseNumber)
+                    {
+                        isExist = true;
+                    }
                 }
+                if (isExist)
+                    return PartialView("ExistValidationView", addressList);
+
+                addressList.Add(address);
+                db.AddressesDB.Add(address);
+                
+                await db.SaveChangesAsync();
                 return PartialView(addressList);
             }
             addressList.Add(address);
