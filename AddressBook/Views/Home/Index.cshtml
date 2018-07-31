@@ -25,20 +25,20 @@
                     <div class="modal-body">
                         <form>
                             <div class="col-md-12">
-                                <label for="validationDefault01">* Страна</label>
-                                <input type="text" name="country" class="form-control" id="validationDefault01" placeholder="Введите страну" required>
+                                <label for="country">* Страна</label>
+                                <input type="text" name="country" class="form-control" id="country" placeholder="Введите страну" data-rule="required">
                             </div>
                             <div class="col-md-12">
-                                <label for="validationDefault01">* Город</label>
-                                <input type="text" name="city" class="form-control" id="validationDefault01" placeholder="Введите город" required>
+                                <label for="city">* Город</label>
+                                <input type="text" name="city" class="form-control" id="city" placeholder="Введите город" data-rule="required">
                             </div>
                             <div class="col-md-12">
-                                <label for="validationDefault01">Улица</label>
-                                <input type="text" name="street" class="form-control" id="validationDefault01" placeholder="Введите улицу" required>
+                                <label for="street">Улица</label>
+                                <input type="text" name="street" class="form-control" id="street" placeholder="Введите улицу">
                             </div>
                             <div class="col-md-12">
-                                <label>Номер дома</label>
-                                <input type="text" name="houseNumber" class="form-control" placeholder="Введите номер дома" required>
+                                <label for="houseNumber">Номер дома</label>
+                                <input type="text" name="houseNumber" class="form-control" id="houseNumber" placeholder="Введите номер дома">
                             </div>
                         </form>
                     </div>
@@ -71,4 +71,8 @@
         </div>
     </div>
 </div>
+
+@section Scripts{
+    @Scripts.Render("~/bundles/myjsval")
+}
 
