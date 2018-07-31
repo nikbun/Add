@@ -15,29 +15,44 @@ namespace AddressBook.Controllers
         
         public ActionResult Index()
         {
-            return View(db.AddressesDB);
+            List<Address> addressList = new List<Address>();
+            addressList.Add(new Address());
+            foreach (Address adrs in db.AddressesDB)
+            {
+                addressList.Add(adrs);
+            }
+            return View(addressList);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> UpdateAdresses(string country, string city, string street, string houseNumber)
         {
+            List<Address> addressList = new List<Address>();
             Address address = new Address();
             address.Country = country;
             address.City = city;
             address.Street = street;
             address.HouseNumber = int.Parse(houseNumber);
             address.Date = DateTime.Now;
+            
             if (ModelState.IsValid)
             {
+                addressList.Add(new Address());
                 db.AddressesDB.Add(address);
                 await db.SaveChangesAsync();
+                foreach (Address adrs in db.AddressesDB)
+                {
+                    addressList.Add(adrs);
+                }
+                return PartialView(addressList);
             }
-            else
+            addressList.Add(address);
+            foreach (Address adrs in db.AddressesDB)
             {
-                Console.WriteLine("ААААААААААААААААААААААА..... Сам не знаю как так получилось... Честно...");
+                addressList.Add(adrs);
             }
-            return PartialView(db.AddressesDB);
+            return PartialView("ValidationView", addressList);
         }
 
         protected override void Dispose(bool disposing)
