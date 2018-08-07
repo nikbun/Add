@@ -1,23 +1,40 @@
 ﻿@{
     ViewBag.Title = "Адресная книга";
 }
+<!-- Кнопка добавления -->
+<div class="add_button">
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">+</button>
+</div>
 
-<div>
+<!-- Обновление таблицы -->
+@using (Ajax.BeginForm("UpdateAdresses", new AjaxOptions
+{
+    UpdateTargetId = "resultAddresses",
+    LoadingElementId = "loadingTable"
+}))
+{
+    <button type="submit" id="updateform" style="display:none"></button>
+}
 
-    <!-- Кнопка добавления -->
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-        Добавить
-    </button>
+<!-- Таблица -->
+<div class="row justify-content-center" id="loadingTable" style="display:none;">
+    <label class="control-label">Загрузка...</label>
+</div>
+<div class="row justify-content-center">
+    <div class="col-12" id="resultAddresses"></div>
+</div>
 
-    <!-- Таблица и модальное окно -->
-    @using (Ajax.BeginForm("UpdateAdresses", new AjaxOptions
+<!-- Модальное окно -->
+<div class="row">
+    @using (Ajax.BeginForm("ValidateForm", new AjaxOptions
     {
-        UpdateTargetId = "results",
-        LoadingElementId = "loading"
+        UpdateTargetId = "resultForm",
+        LoadingElementId = "loadingForm"
     }))
     {
-        <div id="results" >
-            @Html.Partial("UpdateAdresses")
+        @Html.Partial("FormView", new AddressBook.Models.Address())
+        <div id="resultForm">
+            @Html.Partial("ValidateForm")
         </div>
     }
 </div>

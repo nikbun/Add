@@ -1,0 +1,26 @@
+﻿@model IEnumerable<AddressBook.Models.Address>
+
+<!--Таблица-->
+<table class="table  table-striped">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">@Html.DisplayNameFor(model => model.Country)</th>
+            <th scope="col">@Html.DisplayNameFor(model => model.City)</th>
+            <th scope="col">@Html.DisplayNameFor(model => model.Street)</th>
+            <th scope="col">@Html.DisplayNameFor(model => model.HouseNumber)</th>
+            <th scope="col">@Html.DisplayNameFor(model => model.Date)</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (AddressBook.Models.Address address in Model)
+        {
+            <tr>
+                <td><p>@address.Country<p></td>
+                <td><p>@address.City</p></td>
+                <td><p>@address.Street</p></td>
+                <td><p>@address.HouseNumber</p></td>
+                <td><p>@address.Date.ToLongDateString()</p></td>
+            </tr>
+        }
+    </tbody>
+</table>

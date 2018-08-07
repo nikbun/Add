@@ -1,0 +1,45 @@
+﻿@model AddressBook.Models.Address
+
+<!--Форма добавления записи-->
+@Html.AntiForgeryToken()
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Добавление новой записи</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="col-md-12">
+                    <label class="control-label" for="Country">*Страна</label>
+                    @Html.EditorFor(model => model.Country, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Country, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-12">
+                    <label class="control-label" for="City">*Город</label>
+                    @Html.EditorFor(model => model.City, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.City, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-12">
+                    @Html.LabelFor(model => model.Street, htmlAttributes: new { @class = "control-label" })
+                    @Html.EditorFor(model => model.Street, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Street, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-12">
+                    @Html.LabelFor(model => model.HouseNumber, htmlAttributes: new { @class = "control-label" })
+                    @Html.EditorFor(model => model.HouseNumber, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.HouseNumber, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="col" id="loadingForm" style="display:none;">
+                    <label class="control-label">Отправка данных...</label>
+                </div>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Отмена</button>
+                <button type="submit" class="btn btn-primary">Сохранить</button>
+            </div>
+        </div>
+    </div>
+</div>

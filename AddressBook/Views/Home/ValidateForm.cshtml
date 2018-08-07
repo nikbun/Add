@@ -1,0 +1,31 @@
+﻿@model AddressBook.Controllers.State
+
+@if (Model == AddressBook.Controllers.State.emptyForm)
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#exampleModalCenter').modal('hide');
+            $(".form-control").val('');
+            $('#updateform').click();
+            $("#resultForm").children().remove();
+        });
+    </script>
+}
+else if (Model == AddressBook.Controllers.State.errorForm)
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            alert("Ошибка ввода данных!");
+            $("#resultForm").children().remove();
+        });
+    </script>
+}
+else if (Model == AddressBook.Controllers.State.errorExsist)
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            alert("Такой адрес уже есть в базе данных!");
+            $("#resultForm").children().remove();
+        });
+    </script>
+}
