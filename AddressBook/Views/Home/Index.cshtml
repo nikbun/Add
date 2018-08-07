@@ -1,13 +1,14 @@
 ﻿@{
     ViewBag.Title = "Адресная книга";
 }
+
 <!-- Кнопка добавления -->
 <div class="add_button">
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">+</button>
 </div>
 
 <!-- Обновление таблицы -->
-@using (Ajax.BeginForm("UpdateAdresses", new AjaxOptions
+@using (Ajax.BeginForm("UpdateAddressesTable", new AjaxOptions
 {
     UpdateTargetId = "resultAddresses",
     LoadingElementId = "loadingTable"
@@ -16,25 +17,25 @@
     <button type="submit" id="updateform" style="display:none"></button>
 }
 
+
 <!-- Таблица -->
 <div class="row justify-content-center" id="loadingTable" style="display:none;">
     <label class="control-label">Загрузка...</label>
 </div>
-<div class="row justify-content-center">
-    <div class="col-12" id="resultAddresses"></div>
-</div>
+<div id="resultAddresses"></div>
+
 
 <!-- Модальное окно -->
 <div class="row">
-    @using (Ajax.BeginForm("ValidateForm", new AjaxOptions
+    @using (Ajax.BeginForm("ValidateAddAddressForm", new AjaxOptions
     {
         UpdateTargetId = "resultForm",
         LoadingElementId = "loadingForm"
     }))
     {
-        @Html.Partial("FormView", new AddressBook.Models.Address())
+        @Html.Partial("AddAddressForm", new AddressBook.Models.Address())
         <div id="resultForm">
-            @Html.Partial("ValidateForm")
+            @Html.Partial("ValidateAddAddressForm")
         </div>
     }
 </div>

@@ -16,7 +16,7 @@ namespace AddressBook.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> ValidateForm(string country, string city, string street, int? houseNumber)
+        public async Task<ActionResult> ValidateAddAddressForm(string country, string city, string street, int? houseNumber)
         {
             Address address = new Address();
             address.Country = country;
@@ -47,9 +47,9 @@ namespace AddressBook.Controllers
 
 
         [HttpPost]
-        public async Task<ActionResult> UpdateAdresses()
+        public async Task<ActionResult> UpdateAddressesTable()
         {
-            return PartialView("UpdateAddresses", db.AddressesDB);
+            return PartialView("UpdateAddressesTable", db.AddressesDB);
         }
 
         protected override void Dispose(bool disposing)

@@ -1,0 +1,39 @@
+﻿@model AddressBook.Models.Address
+
+<!--Форма добавления записи-->
+@Html.AntiForgeryToken()
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Добавление новой записи</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                @Html.EditorForModel()
+            </div>
+            <div class="modal-footer">
+                <div class="col" id="loadingForm" style="display:none;">
+                    <label class="control-label">Отправка данных...</label>
+                </div>
+                @Helpers.CloseButtonEditorAddressForm()
+                <button type="submit" class="btn btn-primary">Сохранить</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    $('#exampleModalCenter').on('hidden.bs.modal', function (e) {
+        $("input.form-control").blur();
+        $("input.form-control").removeClass("input-validation-error");
+        $("input.form-control").addClass("valid");
+        $("input.form-control").attr("aria-invalid", "false");
+        $("span.text-danger").removeClass("field-validation-error");
+        $("span.text-danger").addClass("field-validation-valid");
+        $("span.text-danger").children().remove();
+    })
+</script>

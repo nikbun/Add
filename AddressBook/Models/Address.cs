@@ -25,12 +25,13 @@ namespace AddressBook.Models
         [Display(Name = "Улица")]
         public String Street { get; set; }
 
-        [RegularExpression(@"^[0-9]{0,5}$", ErrorMessage = "Введите целое число от 0 до 99999")]
+        [RegularExpression(@"^([0-9]{0,2}|([0-9]{2}[0-57-9]|[0-57-9][0-9]{2}|[0-9][0-57-9][0-9])|[0-9]{4,5})$", ErrorMessage = "Введите целое число от 0 до 667 или от 668 до 99999")]
         [Display(Name = "№ дома")]
         public int? HouseNumber { get; set; }
 
         [ScaffoldColumn(false)]
         [Display(Name = "Дата добавления записи")]
+        [DataType(DataType.Date)]
         public DateTime Date { get; set; }
     }
 }

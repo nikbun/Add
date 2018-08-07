@@ -12,14 +12,14 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (AddressBook.Models.Address address in Model)
+        @for (int i = 0; i < Model.Count(); i++)
         {
             <tr>
-                <td><p>@address.Country<p></td>
-                <td><p>@address.City</p></td>
-                <td><p>@address.Street</p></td>
-                <td><p>@address.HouseNumber</p></td>
-                <td><p>@address.Date.ToLongDateString()</p></td>
+                <td>@Model.ElementAt(i).Country</td>
+                <td>@Model.ElementAt(i).City</td>
+                <td>@Model.ElementAt(i).Street</td>
+                <td>@Model.ElementAt(i).HouseNumber</td>
+                <td>@Html.DisplayFor(model => model.ElementAt(i).Date)</td>
             </tr>
         }
     </tbody>
