@@ -10,7 +10,7 @@ namespace AddressBook.Models
         [Key]
         [ScaffoldColumn(false)]
         public int AddressID { get; set; }
-        
+
         [Required]
         [StringLength(50, MinimumLength = 2, ErrorMessage = "Длина строки должна быть от 2 до 50 символов")]
         [Display(Name = "Страна")]
@@ -27,7 +27,7 @@ namespace AddressBook.Models
 
         [RegularExpression(@"^[0-9]{0,5}$", ErrorMessage = "Введите целое число от 0 до 99999")]
         [Display(Name = "№ дома")]
-        public int HouseNumber { get; set; }
+        public int? HouseNumber { get; set; }
 
         [ScaffoldColumn(false)]
         [Display(Name = "Дата добавления записи")]
