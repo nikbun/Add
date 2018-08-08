@@ -9,7 +9,7 @@ namespace AddressBook.Models
     {
         [Key]
         [ScaffoldColumn(false)]
-        public int AddressID { get; set; }
+        public int AddressId { get; set; }
 
         [Required]
         [StringLength(50, MinimumLength = 2, ErrorMessage = "Длина строки должна быть от 2 до 50 символов")]
@@ -33,10 +33,11 @@ namespace AddressBook.Models
         [Display(Name = "Дата добавления записи")]
         [DataType(DataType.Date)]
         public DateTime Date { get; set; }
-        /*
+        
         [Display(Name = "Вид здания")]
         [RegularExpression(@"^[0-9]{0,5}$", ErrorMessage = "Целое число от 0 до 99999")]
-        public int TypeBuildingId {get; set;}
-        */
+        public int? TypeBuild {get; set;}
+
+        public TypeBuilding Type { get; set; }
     }
 }

@@ -1,6 +1,6 @@
 ﻿USE AddressBookDB;
 
-/* Добавление таблиц 
+/* Пересоздание базы данных */
 DROP TABLE Addresses
 DROP TABLE TypeBuilding
 
@@ -17,8 +17,7 @@ CREATE TABLE Addresses (
     Street      NVARCHAR (50)     NULL,
     HouseNumber INT               NULL,
     Date        DATETIME          DEFAULT (getdate()) NOT NULL,
-	TypeBuild   INT				  NOT NULL,
+	TypeBuild   INT				  NULL,
 	CONSTRAINT foreign_address    FOREIGN KEY (TypeBuild) REFERENCES TypeBuilding(BuildingId),
     CONSTRAINT primary_address_id PRIMARY KEY (AddressID)
 );
-*/

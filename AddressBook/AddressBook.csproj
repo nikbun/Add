@@ -170,6 +170,7 @@
     </Compile>
     <Compile Include="Models\Address.cs" />
     <Compile Include="Models\AddressContext.cs" />
+    <Compile Include="Models\TypeBuilding.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -9,5 +9,6 @@ namespace AddressBook.Models
         { }
 
         public DbSet<Address> AddressesDB { get; set; }
+        public DbSet<TypeBuilding> TypeBuildDB { get; set; }
     }
 }
