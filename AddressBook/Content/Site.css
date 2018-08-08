@@ -6,6 +6,10 @@
     z-index: 2;
 }
 
+td.edit {
+    width: 32px;
+}
+
 /*
 body {
     font-size: 13px;

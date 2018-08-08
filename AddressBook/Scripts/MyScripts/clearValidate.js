@@ -8,4 +8,5 @@ $('#exampleModalCenter').on('hidden.bs.modal', function (e) {
     $("span.text-danger").removeClass("field-validation-error");
     $("span.text-danger").addClass("field-validation-valid");
     $("span.text-danger").children().remove();
+    $("#exampleModalLongTitle")[0].innerHTML = "Добавление новой записи";
 })

@@ -1,5 +1,6 @@
 ﻿using AddressBook.Models;
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 
@@ -13,10 +14,11 @@ namespace AddressBook.Controllers
         {
             return View(State.emptyForm);
         }
-
+        
+        // Добавление/редктирование базы данных
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> ValidateAddAddressForm(string country, string city, string street, int? houseNumber)
+        public async Task<ActionResult> ValidateAddAddressForm(string addressId, string country, string city, string street, int? houseNumber)
         {
             Address address = new Address();
             address.Country = country;
@@ -28,17 +30,29 @@ namespace AddressBook.Controllers
 
             if (ModelState.IsValid)
             {
-                foreach (Address adrs in db.AddressesDB)
+                if (addressId == "")
                 {
-                    if (adrs.Country == address.Country &&
-                        adrs.City == address.City &&
-                        adrs.Street == address.Street &&
-                        adrs.HouseNumber == address.HouseNumber)
+                    foreach (Address adrs in db.AddressesDB)
                     {
-                        return PartialView(State.errorExsist);
+                        if (adrs.Country == address.Country &&
+                            adrs.City == address.City &&
+                            adrs.Street == address.Street &&
+                            adrs.HouseNumber == address.HouseNumber)
+                        {
+                            return PartialView(State.errorExsist);
+                        }
                     }
+                    db.AddressesDB.Add(address);
                 }
-                db.AddressesDB.Add(address);
+                else
+                {
+                    var addr = await db.AddressesDB.FindAsync(int.Parse(addressId));
+                    addr.Country = address.Country;
+                    addr.City = address.City;
+                    addr.Street = address.Street;
+                    addr.HouseNumber = address.HouseNumber;
+                    addr.Date = address.Date;
+                }
                 await db.SaveChangesAsync();
                 return PartialView(State.emptyForm);
             }
@@ -51,15 +65,7 @@ namespace AddressBook.Controllers
         {
             return PartialView("UpdateAddressesTable", db.AddressesDB);
         }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+        
     }
 
     public enum State { emptyForm = 0, errorForm, errorExsist }
