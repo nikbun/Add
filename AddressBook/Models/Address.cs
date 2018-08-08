@@ -33,5 +33,10 @@ namespace AddressBook.Models
         [Display(Name = "Дата добавления записи")]
         [DataType(DataType.Date)]
         public DateTime Date { get; set; }
+        /*
+        [Display(Name = "Вид здания")]
+        [RegularExpression(@"^[0-9]{0,5}$", ErrorMessage = "Целое число от 0 до 99999")]
+        public int TypeBuildingId {get; set;}
+        */
     }
 }
