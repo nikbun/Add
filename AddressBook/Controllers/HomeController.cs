@@ -25,10 +25,10 @@ namespace AddressBook.Controllers
         public async Task<ActionResult> ValidateAddAddressForm(string addressId, string country, string city, string street, int? houseNumber, int? buildingId)
         {
             Address address = new Address();
-            address.Country = country;
-            address.City = city;
+            address.Country = CapitalLetter(country);
+            address.City = CapitalLetter(city);
             if (address.Street != "")
-                address.Street = street;
+                address.Street = CapitalLetter(street);
             address.HouseNumber = houseNumber;
             address.Date = DateTime.Now;
             address.TypeBuildId = buildingId;
@@ -70,6 +70,20 @@ namespace AddressBook.Controllers
         {
             //var adrs = await db.AddressesDB.Include(p => p.TypeBuilding).ToListAsync<Address>();
             return PartialView("UpdateAddressesTable", await db.AddressesDB.Include(t => t.TypeBuilding).ToListAsync());
+        }
+        /// <summary>
+        /// Перевести первую букву в верхний регистр
+        /// </summary>
+        /// <param name="str">Пример: "слово"</param>
+        /// <returns>Пример: "Слово"</returns>
+        private string CapitalLetter(string str)
+        {
+            if (str != "")
+            {
+                return str.Substring(0, 1).ToUpper() + (str.Length > 1 ? str.Substring(1) : "");
+            }
+            else
+                return "";
         }
     }
 

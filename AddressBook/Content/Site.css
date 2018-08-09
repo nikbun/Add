@@ -4,11 +4,23 @@
     left: 10px;
     bottom: 10px;
     z-index: 2;
+    opacity: .3;
 }
 
+.add_button:hover {
+    opacity: .7;
+}
+
+thead.fixed-head th {
+    position: sticky;
+    top: 0px;
+}
+
+/* Столбец редактирования
 td.edit {
     width: 32px;
 }
+*/
 
 /*
 body {
