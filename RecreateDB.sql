@@ -5,7 +5,7 @@ DROP TABLE Addresses
 DROP TABLE TypeBuilding
 
 CREATE TABLE TypeBuilding (
-    BuildingId     INT		     NOT NULL,
+    BuildingId     INT		     IDENTITY (1, 1) NOT NULL,
     TypeBuild NVARCHAR (50) NOT NULL,
     CONSTRAINT primary_build_id PRIMARY KEY (BuildingId)
 );

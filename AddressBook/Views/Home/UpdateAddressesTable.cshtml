@@ -8,21 +8,23 @@
             <th scope="col">@Html.DisplayNameFor(model => model.City)</th>
             <th scope="col">@Html.DisplayNameFor(model => model.Street)</th>
             <th scope="col">@Html.DisplayNameFor(model => model.HouseNumber)</th>
+            <th scope="col">@Html.DisplayNameFor(model => model.TypeBuilding.TypeBuild)</th>
             <th scope="col">@Html.DisplayNameFor(model => model.Date)</th>
         </tr>
     </thead>
     <tbody>
-        @for (int i = 0; i < Model.Count(); i++)
+        @foreach (AddressBook.Models.Address address in Model)
         {
-            <tr class="edit-address">
-                <td style="display:none">@Model.ElementAt(i).AddressID</td>
-                <td>@Model.ElementAt(i).Country</td>
-                <td>@Model.ElementAt(i).City</td>
-                <td>@Model.ElementAt(i).Street</td>
-                <td>@Model.ElementAt(i).HouseNumber</td>
-                <td>@Html.DisplayFor(model => model.ElementAt(i).Date)</td>
-                <!--<td class="edit"><img  src="~/Images/pencil.png"></td>-->
-            </tr>
+        <tr class="edit-address">
+            <td style="display:none">@address.AddressId</td>
+            <td>@address.Country</td>
+            <td>@address.City</td>
+            <td>@address.Street</td>
+            <td>@address.HouseNumber</td>
+            <td>@address.TypeBuilding.TypeBuild</td>
+            <td>@Html.DisplayFor(model => address.Date)</td>
+            <!--<td class="edit"><img  src="~/Images/pencil.png"></td>-->
+        </tr>
         }
     </tbody>
 </table>

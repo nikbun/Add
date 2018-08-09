@@ -1,6 +1,6 @@
 ﻿@model AddressBook.Models.Address
 <div style="display:none">
-    @Html.EditorFor(model => model.AddressID, new { htmlAttributes = new { @class = "form-control" } })
+    @Html.EditorFor(model => model.AddressId, new { htmlAttributes = new { @class = "form-control" } })
 </div>
 <div class="col-md-12">
     <label class="control-label" for="Country">*Страна</label>
@@ -21,4 +21,9 @@
     @Html.LabelFor(model => model.HouseNumber, htmlAttributes: new { @class = "control-label" })
     @Html.EditorFor(model => model.HouseNumber, new { htmlAttributes = new { @class = "form-control" } })
     @Html.ValidationMessageFor(model => model.HouseNumber, "", new { @class = "text-danger" })
+</div>
+<div class="col-md-12">
+    @Html.LabelFor(model => model.TypeBuilding.TypeBuild, htmlAttributes: new { @class = "control-label" })
+    @Html.EditorFor(model => model.TypeBuilding.TypeBuild, new { htmlAttributes = new { @class = "form-control" } })
+    @Html.ValidationMessageFor(model => model.TypeBuilding.TypeBuild, "", new { @class = "text-danger" })
 </div>

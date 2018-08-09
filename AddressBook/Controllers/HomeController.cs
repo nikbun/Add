@@ -1,5 +1,7 @@
 ﻿using AddressBook.Models;
 using System;
+using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Mvc;
@@ -63,7 +65,8 @@ namespace AddressBook.Controllers
         [HttpPost]
         public async Task<ActionResult> UpdateAddressesTable()
         {
-            return PartialView("UpdateAddressesTable", db.AddressesDB);
+            var adresses = db.AddressesDB.Include(p => p.TypeBuilding);
+            return PartialView("UpdateAddressesTable", await adresses.ToListAsync());
         }
         
     }
