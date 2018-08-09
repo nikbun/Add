@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -37,9 +38,18 @@ namespace AddressBook.Models
         [Display(Name = "Вид здания")]
         
         public int? TypeBuildId { get; set;}
-        [ForeignKey("BId")]
-        public TypeBuilding TypeBuilding { get; set; }
+        
+        public virtual TypeBuilding TypeBuilding { get; set; }
     }
 
+    public class TypeBuilding
+    {
+        [Key]
+        public int BuildingId { get; set; }
 
+        [Required]
+        [StringLength(50, MinimumLength = 2, ErrorMessage = "Длина строки должна быть от 2 до 50 символов")]
+        [Display(Name = "Вид здания")]
+        public String TypeBuild { get; set; }
+    }
 }
