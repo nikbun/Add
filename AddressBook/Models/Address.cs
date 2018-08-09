@@ -37,6 +37,7 @@ namespace AddressBook.Models
 
         //[ForeignKey("TypeBuilding")]
         [Display(Name = "Вид здания")]
+        [RegularExpression(@"^[0-2]$", ErrorMessage = "Введите целое число от 0 до 2")]
         public int? TypeBuildId { get; set; }
 
         public TypeBuilding TypeBuilding { get; set; }

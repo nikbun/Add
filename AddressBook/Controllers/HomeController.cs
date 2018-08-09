@@ -14,13 +14,15 @@ namespace AddressBook.Controllers
 
         public ActionResult Index()
         {
+            SelectList types = new SelectList(db.TypeBuildDB, "BuildingId", "TypeBuild");
+            ViewBag.Types = types;
             return View(State.emptyForm);
         }
         
         // Добавление/редктирование базы данных
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> ValidateAddAddressForm(string addressId, string country, string city, string street, int? houseNumber, int? typeBuildId)
+        public async Task<ActionResult> ValidateAddAddressForm(string addressId, string country, string city, string street, int? houseNumber, int? buildingId)
         {
             Address address = new Address();
             address.Country = country;
@@ -29,7 +31,7 @@ namespace AddressBook.Controllers
                 address.Street = street;
             address.HouseNumber = houseNumber;
             address.Date = DateTime.Now;
-            address.TypeBuildId = typeBuildId;
+            address.TypeBuildId = buildingId;
 
             if (ModelState.IsValid)
             {
@@ -63,11 +65,10 @@ namespace AddressBook.Controllers
             return PartialView(State.errorForm);
         }
 
-
         [HttpPost]
         public async Task<ActionResult> UpdateAddressesTable()
         {
-            //List<Address> adrs = await db.AddressesDB.Include(p => p.TypeBuilding).ToListAsync<Address>();
+            //var adrs = await db.AddressesDB.Include(p => p.TypeBuilding).ToListAsync<Address>();
             return PartialView("UpdateAddressesTable", await db.AddressesDB.Include(t => t.TypeBuilding).ToListAsync());
         }
     }

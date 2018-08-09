@@ -7,7 +7,8 @@
         inners[2].value = this.children[2].innerText;
         inners[3].value = this.children[3].innerText;
         inners[4].value = this.children[4].innerText;
-        inners[5].value = this.children[5].innerText;
+        //inners[5].value = this.children[5].innerText;
+        $("form#form1 select.form-control")[0].selectedIndex = this.children[5].innerText;
         $('#exampleModalCenter').modal('show');
     });
 });

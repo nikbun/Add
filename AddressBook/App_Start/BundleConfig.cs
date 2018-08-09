@@ -19,7 +19,8 @@ namespace AddressBook
 
             bundles.Add(new ScriptBundle("~/bundles/MyScripts").Include(
                         "~/Scripts/MyScripts/clearValidate.js",
-                        "~/Scripts/MyScripts/checkCapitalLetter.js"));
+                        "~/Scripts/MyScripts/checkCapitalLetter.js",
+                        "~/Scripts/MyScripts/loader.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/TableScripts").Include(
                         "~/Scripts/MyScripts/openEditorForm.js"));

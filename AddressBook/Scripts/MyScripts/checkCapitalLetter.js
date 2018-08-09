@@ -1,4 +1,4 @@
-﻿$("input.capital-letter").keyup(function (eventObject)
+﻿$("form#form1 input.capital-letter").keyup(function (eventObject)
 {
     var s = this.value;
     if (s != "")
