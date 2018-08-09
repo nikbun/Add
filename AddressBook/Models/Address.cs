@@ -34,22 +34,13 @@ namespace AddressBook.Models
         [Display(Name = "Дата добавления записи")]
         [DataType(DataType.Date)]
         public DateTime Date { get; set; }
-        
+
+        //[ForeignKey("TypeBuilding")]
         [Display(Name = "Вид здания")]
-        
-        public int? TypeBuildId { get; set;}
-        
-        public virtual TypeBuilding TypeBuilding { get; set; }
+        public int? TypeBuildId { get; set; }
+
+        public TypeBuilding TypeBuilding { get; set; }
     }
 
-    public class TypeBuilding
-    {
-        [Key]
-        public int BuildingId { get; set; }
-
-        [Required]
-        [StringLength(50, MinimumLength = 2, ErrorMessage = "Длина строки должна быть от 2 до 50 символов")]
-        [Display(Name = "Вид здания")]
-        public String TypeBuild { get; set; }
-    }
+    
 }

@@ -65,8 +65,8 @@ namespace AddressBook.Controllers
         [HttpPost]
         public async Task<ActionResult> UpdateAddressesTable()
         {
-            List<Address> adrs = await db.AddressesDB.Include(p => p.TypeBuilding).ToListAsync<Address>();
-            return PartialView("UpdateAddressesTable", adrs);
+            //List<Address> adrs = await db.AddressesDB.Include(p => p.TypeBuilding).ToListAsync<Address>();
+            return PartialView("UpdateAddressesTable", await db.AddressesDB.Include(t => t.TypeBuilding).ToListAsync());
         }
     }
 
