@@ -20,7 +20,7 @@ namespace AddressBook.Controllers
         // Добавление/редктирование базы данных
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> ValidateAddAddressForm(string addressId, string country, string city, string street, int? houseNumber, String type)
+        public async Task<ActionResult> ValidateAddAddressForm(string addressId, string country, string city, string street, int? houseNumber, int? typeBuildId)
         {
             Address address = new Address();
             address.Country = country;
@@ -29,6 +29,7 @@ namespace AddressBook.Controllers
                 address.Street = street;
             address.HouseNumber = houseNumber;
             address.Date = DateTime.Now;
+            address.TypeBuildId = typeBuildId;
 
             if (ModelState.IsValid)
             {
@@ -54,6 +55,7 @@ namespace AddressBook.Controllers
                     addr.Street = address.Street;
                     addr.HouseNumber = address.HouseNumber;
                     addr.Date = address.Date;
+                    addr.TypeBuildId = address.TypeBuildId;
                 }
                 await db.SaveChangesAsync();
                 return PartialView(State.emptyForm);

@@ -23,7 +23,7 @@
     @Html.ValidationMessageFor(model => model.HouseNumber, "", new { @class = "text-danger" })
 </div>
 <div class="col-md-12">
-    @Html.LabelFor(model => model.TypeBuilding.TypeBuild, htmlAttributes: new { @class = "control-label" })
-    @Html.EditorFor(model => model.TypeBuilding.TypeBuild, new { htmlAttributes = new { @class = "form-control" } })
-    @Html.ValidationMessageFor(model => model.TypeBuilding.TypeBuild, "", new { @class = "text-danger" })
+    @Html.LabelFor(model => model.TypeBuildId, htmlAttributes: new { @class = "control-label" })
+    @Html.EditorFor(model => model.TypeBuildId, new { htmlAttributes = new { @class = "form-control" } })
+    @Html.ValidationMessageFor(model => model.TypeBuildId, "", new { @class = "text-danger" })
 </div>
