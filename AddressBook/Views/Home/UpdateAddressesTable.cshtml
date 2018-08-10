@@ -22,7 +22,7 @@
             <td>@address.Street</td>
             <td>@address.HouseNumber</td>
             <td style="display:none">@address.TypeBuildId</td>
-            <td>@address.TypeBuilding.TypeBuild</td>
+            <td>@(address.TypeBuildId != null)? @address.TypeBuilding.TypeBuild : ""</td>
             <td>@Html.DisplayFor(model => address.Date)</td>
             <!--<td class="edit"><img  src="~/Images/pencil.png"></td>-->
         </tr>
