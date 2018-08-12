@@ -22,7 +22,7 @@ namespace AddressBook.Controllers
 		// Добавление/редактирование базы данных
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public async Task<ActionResult> ValidateAddAddressForm(string addressId, string country, string city, string street, int? houseNumber, int? typeBuildId)
+		public async Task<ActionResult> ValidateAddressForm(string addressId, string country, string city, string street, int? houseNumber, int? typeBuildId)
 		{
 			Address address = new Address();
 			address.Country = CapitalLetter(country);
@@ -66,10 +66,10 @@ namespace AddressBook.Controllers
 		}
 
 		[HttpPost]
-		public async Task<ActionResult> UpdateAddressesTable()
+		public async Task<ActionResult> GetAddressesTable()
 		{
 			//var adrs = await db.AddressesDB.Include(p => p.TypeBuilding).ToListAsync<Address>();
-			return PartialView("UpdateAddressesTable", await db.AddressesDB.Include(t => t.TypeBuilding).ToListAsync());
+			return PartialView("AddressesTable", await db.AddressesDB.Include(t => t.TypeBuilding).ToListAsync());
 		}
 
 		/// <summary>

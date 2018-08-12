@@ -8,7 +8,7 @@
 </div>
 
 <!-- Обновление таблицы -->
-@using (Ajax.BeginForm("UpdateAddressesTable", new AjaxOptions
+@using (Ajax.BeginForm("GetAddressesTable", new AjaxOptions
 {
 	UpdateTargetId = "resultAddresses",
 	LoadingElementId = "loadingTable"
@@ -25,15 +25,15 @@
 
 <!-- Модальное окно -->
 <div class="row">
-	@using (Ajax.BeginForm("ValidateAddAddressForm", new AjaxOptions
+	@using (Ajax.BeginForm("ValidateAddressForm", new AjaxOptions
 	{
 		UpdateTargetId = "resultForm",
 		LoadingElementId = "loadingForm"
 	}))
 	{
-		@Html.Partial("AddAddressForm", new AddressBook.Models.Address())
+		@Html.Partial("AddressForm", new AddressBook.Models.Address())
 		<div id="resultForm">
-			@Html.Partial("ValidateAddAddressForm")
+			@Html.Partial("ValidateAddressForm")
 		</div>
 	}
 </div>
