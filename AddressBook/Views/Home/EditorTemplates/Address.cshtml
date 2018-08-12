@@ -22,15 +22,16 @@
     @Html.EditorFor(model => model.HouseNumber, new { htmlAttributes = new { @class = "form-control only-number" } })
     @Html.ValidationMessageFor(model => model.HouseNumber, "", new { @class = "text-danger" })
 </div>
-<!--
+
 <div class="col-md-12">
     @Html.LabelFor(model => model.TypeBuildId, htmlAttributes: new { @class = "control-label" })
-    @Html.EditorFor(model => model.TypeBuildId, new { htmlAttributes = new { @class = "form-control" } })
-    @Html.ValidationMessageFor(model => model.TypeBuildId, "", new { @class = "text-danger" })
-</div>
--->
-<div class="col-md-12">
-    @Html.LabelFor(model => model.TypeBuildId, htmlAttributes: new { @class = "control-label" })
-    @Html.DropDownList("BuildingId", ViewBag.Types as SelectList, new { @class = "form-control" })
+	<input class="form-control type-selector text-box single-line valid" style="display:none" data-val="true" data-val-number="Значением поля Вид здания должно быть число." id="TypeBuildId" name="TypeBuildId" type="number" value="" aria-describedby="TypeBuildId-error" aria-invalid="false">
+	<select class="form-control type-selector" aria-invalid="false">
+		<option value="0">Неизвестный вид</option>
+		@foreach (System.Web.Mvc.SelectListItem type in @ViewBag.Types)
+		{
+			<option value="@type.Value">@type.Text</option>
+		}
+	</select>
     @Html.ValidationMessageFor(model => model.TypeBuildId, "", new { @class = "text-danger" })
 </div>

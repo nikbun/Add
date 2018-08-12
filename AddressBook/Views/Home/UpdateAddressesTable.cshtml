@@ -14,15 +14,22 @@
     </thead>
     <tbody>
         @foreach (AddressBook.Models.Address address in Model)
-        {
+		{
         <tr class="edit-address">
             <td style="display:none">@address.AddressId</td>
             <td>@address.Country</td>
             <td>@address.City</td>
             <td>@address.Street</td>
             <td>@address.HouseNumber</td>
-            <td style="display:none">@address.TypeBuildId</td>
-            <td>@(address.TypeBuildId != null)? @address.TypeBuilding.TypeBuild : ""</td>
+			<td style="display:none">@address.TypeBuildId</td>
+			<td>
+				@{
+					if (@address.TypeBuilding != null)
+					{
+						@address.TypeBuilding.TypeBuild 
+					}
+				}
+			</td>
             <td>@Html.DisplayFor(model => address.Date)</td>
             <!--<td class="edit"><img  src="~/Images/pencil.png"></td>-->
         </tr>

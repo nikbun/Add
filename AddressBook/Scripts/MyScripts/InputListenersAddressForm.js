@@ -24,6 +24,16 @@
 			}
 		});
 
-		
+		// При изменении селектора передает значение в поле input
+		$("select.type-selector", form).on("change", function (eventObject) {
+			var typeBuildingId = this.children[this.selectedIndex].value;
+			if (typeBuildingId == 0) {
+				$("input.type-selector", form).get(0).value = null;
+			}
+			else
+			{
+				$("input.type-selector", form).get(0).value = typeBuildingId;
+			}
+		})
 	});
 });
