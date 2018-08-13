@@ -27,7 +27,7 @@
     @Html.LabelFor(model => model.TypeBuildId, htmlAttributes: new { @class = "control-label" })
 	<input class="form-control type-selector text-box single-line valid" style="display:none" data-val="true" data-val-number="Значением поля Вид здания должно быть число." id="TypeBuildId" name="TypeBuildId" type="number" value="" aria-describedby="TypeBuildId-error" aria-invalid="false">
 	<select class="form-control type-selector" aria-invalid="false">
-		<option value="0">Неизвестный вид</option>
+		<option value="0">-</option>
 		@foreach (System.Web.Mvc.SelectListItem type in @ViewBag.Types)
 		{
 			<option value="@type.Value">@type.Text</option>

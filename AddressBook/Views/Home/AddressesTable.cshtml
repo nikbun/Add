@@ -23,11 +23,9 @@
             <td>@address.HouseNumber</td>
 			<td style="display:none">@address.TypeBuildId</td>
 			<td>
-				@{
-					if (@address.TypeBuilding != null)
-					{
-						@address.TypeBuilding.TypeBuild 
-					}
+				@if (@address.TypeBuilding != null)
+				{
+					@address.TypeBuilding.TypeBuild 
 				}
 			</td>
             <td>@Html.DisplayFor(model => address.Date)</td>
@@ -36,5 +34,3 @@
         }
     </tbody>
 </table>
-
-@Scripts.Render("~/bundles/TableScripts")

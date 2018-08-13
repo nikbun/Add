@@ -18,6 +18,6 @@ CREATE TABLE Addresses (
     HouseNumber	 INT				 NULL,
     Date		 DATETIME			 DEFAULT (getdate()) NOT NULL,
 	TypeBuildId	 INT				 NULL,
-	CONSTRAINT	 foreign_address	 FOREIGN KEY (TypeBuild) REFERENCES TypeBuilding(BuildingId),
-    CONSTRAINT	 primary_address_id	 PRIMARY KEY (AddressID)
+	CONSTRAINT	 foreign_address_id	 FOREIGN KEY (TypeBuildId) REFERENCES TypeBuilding(BuildingId),
+    CONSTRAINT	 primary_address_id	 PRIMARY KEY (AddressId)
 );

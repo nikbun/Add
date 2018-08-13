@@ -87,9 +87,7 @@ namespace AddressBook.Controllers
 				{
 					str += s.Substring(0, 1).ToUpper() + (s.Length > 1 ? s.Substring(1).ToLower() : "") + " ";
 				}
-				//дод Удалить последний пробел
-				
-
+				str = str.Substring(0, str.Length - 1);
 				return str;
 			}
 			else
