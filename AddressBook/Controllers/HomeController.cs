@@ -35,18 +35,19 @@ namespace AddressBook.Controllers
 
 			if (ModelState.IsValid)
 			{
-				if (addressId == "")
+				foreach (Address adrs in db.AddressesDB)
 				{
-					foreach (Address adrs in db.AddressesDB)
+					if (adrs.AddressId != int.Parse(addressId) &&
+						adrs.Country == address.Country &&
+						adrs.City == address.City &&
+						adrs.Street == address.Street &&
+						adrs.HouseNumber == address.HouseNumber)
 					{
-						if (adrs.Country == address.Country &&
-							adrs.City == address.City &&
-							adrs.Street == address.Street &&
-							adrs.HouseNumber == address.HouseNumber)
-						{
-							return PartialView(State.errorExsist);
-						}
+						return PartialView(State.errorExsist);
 					}
+				}
+				if (addressId == "")
+				{	
 					db.AddressesDB.Add(address);
 				}
 				else

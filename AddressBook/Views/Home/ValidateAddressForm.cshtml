@@ -5,9 +5,9 @@
     <script type="text/javascript">
         $(document).ready(function () {
             $('#exampleModalCenter').modal('hide');
-            $("form#form1 .form-control").val('');
-            $('form#form0 #updateform').click();
-            $("form#form1 #resultForm").children().remove();
+			$("form#form1").find(".form-control").val('');
+			$("form#form0").find("#updateform").click();
+			$("form#form1").find("#resultForm").children().remove();
         });
     </script>
 }
@@ -16,7 +16,7 @@ else if (Model == AddressBook.Controllers.State.errorForm)
     <script type="text/javascript">
         $(document).ready(function () {
             alert("Ошибка ввода данных!");
-            $("form#form1 #resultForm").children().remove();
+			$("form#form1").find("#resultForm").children().remove();
         });
     </script>
 }
@@ -25,7 +25,7 @@ else if (Model == AddressBook.Controllers.State.errorExsist)
     <script type="text/javascript">
         $(document).ready(function () {
             alert("Такой адрес уже есть в базе данных!");
-            $("form#form1 #resultForm").children().remove();
+			$("form#form1").find("#resultForm").children().remove();
         });
     </script>
 }

@@ -51,6 +51,7 @@
 			inners[2].value = this.children[2].innerText;
 			inners[3].value = this.children[3].innerText;
 			inners[4].value = this.children[4].innerText;
+			inners[5].value = this.children[5].innerText;
 			var options = $("select.type-selector", form)[0].children;
 			var typeBuildId = this.children[5].innerText;
 			$("select.type-selector", form)[0].value = 0;
@@ -75,6 +76,6 @@
 				.children().remove();
 			$("select.form-control", form).get(0).selectedIndex = 0;
 			$("#exampleModalLongTitle").get(0).innerText = "Добавление новой записи";
-		})
+		});
 	});
 });
