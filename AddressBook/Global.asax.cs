@@ -19,7 +19,9 @@ namespace AddressBook
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             Database.SetInitializer<AddressContext>(null);
-            //Database.SetInitializer<AddressContext>(new CreateDatabaseIfNotExists<AddressContext>());
-        }
+			//Database.SetInitializer<AddressContext>(new CreateDatabaseIfNotExists<AddressContext>());
+			Logging.Logger.WriteLog("Address book start", System.Diagnostics.EventLogEntryType.Information);
+
+		}
     }
 }
