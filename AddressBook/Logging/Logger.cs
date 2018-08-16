@@ -11,8 +11,8 @@ namespace AddressBook.Logging
 {
 	public static class Logger
 	{
-		private const string logName = "AddressBookLOG";
-		private const string sourceName = "AddressBook";
+		private const string logName = "Address Book";
+		private const string sourceName = "AddressBook2";
 		private static EventLog log = new EventLog();
 
 		/// <summary>
@@ -25,11 +25,14 @@ namespace AddressBook.Logging
 				var eventSourceData = new EventSourceCreationData(sourceName, logName);
 				EventLog.CreateEventSource(eventSourceData);
 			}
+			
 		}
 
 		public static void WriteLog(string message, EventLogEntryType type)
 		{
+
 			log.Source = sourceName;
+			//log.Log = logName;
 			log.WriteEntry(message, type);
 		}
 	}

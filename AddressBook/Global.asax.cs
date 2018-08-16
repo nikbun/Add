@@ -20,8 +20,8 @@ namespace AddressBook
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             Database.SetInitializer<AddressContext>(null);
 			//Database.SetInitializer<AddressContext>(new CreateDatabaseIfNotExists<AddressContext>());
-			Logging.Logger.WriteLog("Address book start", System.Diagnostics.EventLogEntryType.Information);
-
+			Logging.Logger.CreateLog();
+			Logging.Logger.WriteLog("New test log!!!", System.Diagnostics.EventLogEntryType.Warning);
 		}
     }
 }
